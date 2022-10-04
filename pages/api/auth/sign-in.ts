@@ -10,6 +10,7 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     const dto = req.body;
+    console.log(dto);
 
     const hashPassword = bcrypt.hash(dto.password, 5);
 
@@ -23,6 +24,8 @@ export default async function handler(
       ])
       .single();
 
+    console.log("Registring error: ", error);
+
     const { data: profileData, error: profileError } = await supabase
       .from("profile")
       .insert([
@@ -33,6 +36,7 @@ export default async function handler(
         },
       ])
       .single();
+    console.log("Profile error: ", profileError);
 
     res.status(200).json(profileData);
   }
