@@ -4,13 +4,18 @@ import Head from "next/head";
 import styles from "./Layout.module.scss";
 import Auth from "../pages/home/auth/Auth";
 import { useTypedSelector } from "../../hooks/store/useTypedSelector";
-import { selectProfile } from "../../store/slices/profile/profile.slice";
+import Loading from "../utils/loading/Loading";
+import { useAuth } from "../../hooks/auth/useAuth";
 
 const Layout: FC<PropsWithChildren<{ title: string }>> = ({
   title,
   children,
 }) => {
-  const { profile } = useTypedSelector((state) => state.profile);
+  const { profile, isLoading } = useTypedSelector((state) => state.profile);
+
+  const auth = useAuth();
+
+  if (isLoading) return <Loading />;
 
   if (!profile) return <Auth />;
 

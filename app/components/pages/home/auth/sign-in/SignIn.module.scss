@@ -1,0 +1,19 @@
+.signIn {
+    @apply flex flex-col w-72 items-center;
+
+    > h1 {
+        @apply text-lg font-semibold mb-3;
+    }
+
+    > button {
+        @apply mt-3 bg-blue-500 hover:bg-blue-600 transition-all duration-200 w-full text-white py-2 rounded-md;
+    }
+
+    > h2 {
+        @apply text-black font-semibold mt-2;
+
+        > span {
+            @apply text-blue-400 cursor-pointer hover:underline;
+        }
+    }
+}

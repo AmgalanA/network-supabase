@@ -1,0 +1,11 @@
+.field {
+    @apply w-full relative my-3 rounded-md bg-gray-600 bg-opacity-10;
+
+    > input {
+        @apply outline-none bg-transparent flex-1 py-3 placeholder:text-gray-400 pl-2 placeholder:text-sm;
+    }
+
+    > span {
+        @apply absolute -bottom-5 text-red-500 text-sm left-1;
+    }
+}

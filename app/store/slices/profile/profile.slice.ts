@@ -23,10 +23,30 @@ export const profileSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(profileActions.register.fulfilled, (state, { payload }) => {
-        state.profile = payload;
+        state.profile = payload.profile;
         state.isLoading = false;
       })
       .addCase(profileActions.register.rejected, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(profileActions.login.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(profileActions.login.fulfilled, (state, { payload }) => {
+        state.profile = payload.profile;
+        state.isLoading = false;
+      })
+      .addCase(profileActions.login.rejected, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(profileActions.refresh.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(profileActions.refresh.fulfilled, (state, { payload }) => {
+        state.profile = payload.profile;
+        state.isLoading = false;
+      })
+      .addCase(profileActions.refresh.rejected, (state) => {
         state.isLoading = false;
       });
   },

@@ -1,12 +1,12 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useActions } from "../../../../../hooks/store/useActions";
+import { FC } from "react";
 
-import { AuthService } from "../../../../../services/auth/auth.service";
+import { useActions } from "../../../../../hooks/store/useActions";
 import Field from "../../../../ui/form-elements/field/Field";
 import styles from "./SignIn.module.scss";
 import { ISignInFields } from "./sign-in-fields.interface";
 
-const SignIn = () => {
+const SignIn: FC<{ handleClick: () => void }> = ({ handleClick }) => {
   const {
     register,
     formState: { errors },
@@ -22,8 +22,8 @@ const SignIn = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h1>Create user</h1>
+    <form className={styles.signIn} onSubmit={handleSubmit(onSubmit)}>
+      <h1>Sign In</h1>
 
       <Field
         placeholder="E-mail"
@@ -35,7 +35,7 @@ const SignIn = () => {
       />
 
       <Field
-        placeholder="password"
+        placeholder="Password"
         type="password"
         error={errors.password}
         {...register("password", {
@@ -44,7 +44,7 @@ const SignIn = () => {
       />
 
       <Field
-        placeholder="name"
+        placeholder="Name"
         error={errors?.name}
         {...register("name", {
           required: "Please, enter a name",
@@ -52,7 +52,7 @@ const SignIn = () => {
       />
 
       <Field
-        placeholder="secondName"
+        placeholder="Second Name"
         error={errors?.secondName}
         {...register("secondName", {
           required: "Please, enter a second name",
@@ -60,6 +60,10 @@ const SignIn = () => {
       />
 
       <button type="submit">Sign In</button>
+
+      <h2 onClick={handleClick}>
+        Already have an account? <span>log in</span>
+      </h2>
     </form>
   );
 };

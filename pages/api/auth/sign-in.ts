@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import bcrypt from "bcrypt";
 
-import { ISignInDto } from "../../../app/types/auth/auth.types";
 import { supabase } from "../../../app/utils/supabase";
+import { handleTokens } from "../../../utils/token/handleTokens";
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,9 +10,8 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     const dto = req.body;
-    console.log(dto);
 
-    const hashPassword = bcrypt.hash(dto.password, 5);
+    const hashPassword = await bcrypt.hash(dto.password, 5);
 
     const { data, error } = await supabase
       .from("auth")
@@ -24,8 +23,6 @@ export default async function handler(
       ])
       .single();
 
-    console.log("Registring error: ", error);
-
     const { data: profileData, error: profileError } = await supabase
       .from("profile")
       .insert([
@@ -36,8 +33,19 @@ export default async function handler(
         },
       ])
       .single();
-    console.log("Profile error: ", profileError);
 
-    res.status(200).json(profileData);
+    const payload = {
+      email: dto.email,
+      authId: data.id,
+    };
+
+    const tokens = await handleTokens(payload);
+
+    const responseData = {
+      tokens,
+      profile: profileData,
+    };
+
+    res.status(200).json(responseData);
   }
 }
