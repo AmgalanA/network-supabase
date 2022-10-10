@@ -1,0 +1,16 @@
+.uploadPostForm {
+    @apply relative bg-gray-200 bg-opacity-60 h-fit py-5 w-[50%] max-w-lg px-5 rounded-lg;
+    
+    > h1 {
+        @apply text-lg font-semibold;
+    }
+
+    > .closeIcon {
+        @apply absolute top-1 right-1 text-2xl cursor-pointer;
+    }
+
+    > button {
+        @apply w-full disabled:bg-gray-400 disabled:hover:bg-gray-600 bg-blue-400 hover:bg-blue-500 transition-all duration-200 text-white font-semibold py-2 mt-2 rounded-lg;
+    }
+
+}

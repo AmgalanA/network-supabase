@@ -1,0 +1,25 @@
+.uploadImage {
+    @apply flex flex-col space-y-1 w-full h-40 mt-8 rounded-md border-2 border-dotted border-blue-300 bg-opacity-60 items-center justify-center;
+
+    > .imageWrapper {
+        @apply relative max-h-32 flex items-center;
+
+        > .closeIcon {
+            @apply absolute bg-red-500 rounded-full text-white -top-3 -right-1 cursor-pointer text-xl;
+        }
+
+        > img {
+            @apply w-full h-full;
+        }
+    }
+
+    > h1 {
+        @apply font-semibold;
+    }
+
+    > .uploadIcon {
+        @apply text-2xl cursor-pointer text-gray-500 hover:text-gray-400;
+    }
+
+    
+}

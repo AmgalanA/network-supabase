@@ -17,7 +17,7 @@ export const profileSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(HYDRATE, (state, { payload }: any) => {
-        state.profile = payload.post.profile;
+        state.profile = payload.profile.profile;
       })
       .addCase(profileActions.register.pending, (state) => {
         state.isLoading = true;
@@ -47,6 +47,16 @@ export const profileSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(profileActions.refresh.rejected, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(profileActions.update.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(profileActions.update.fulfilled, (state, { payload }) => {
+        state.profile = payload;
+        state.isLoading = false;
+      })
+      .addCase(profileActions.update.rejected, (state) => {
         state.isLoading = false;
       });
   },

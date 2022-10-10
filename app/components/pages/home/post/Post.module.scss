@@ -1,0 +1,31 @@
+.post {
+    @apply relative mx-4 my-4 bg-white p-3 rounded-lg flex flex-col space-y-3;
+
+    > header {
+        @apply flex items-center border-b-2 border-gray-300 w-full pb-2;
+
+        > h1 {
+            @apply ml-2 text-base font-semibold;
+        }
+
+        > .iconWrapper {
+            @apply ml-auto mr-3 flex items-center space-x-2 text-sm text-gray-500;
+
+            > .moreIcon {
+                @apply mt-1 cursor-pointer text-lg text-black;
+            }
+        }
+    }
+
+    > .image {
+        @apply w-[60%];
+
+        > img {
+            @apply w-full h-[300px] object-cover;
+        }
+    }
+
+    > h2 {
+        @apply text-base text-gray-600;
+    }
+}

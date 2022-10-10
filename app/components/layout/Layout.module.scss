@@ -1,0 +1,8 @@
+
+.layout {
+    @apply w-screen h-screen pt-3;
+
+    .wrapper {
+        @apply w-full h-full max-w-2xl mx-auto rounded-tl-lg rounded-tr-lg bg-gray-100;
+    }
+}

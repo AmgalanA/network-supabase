@@ -3,6 +3,8 @@ import { parseCookies, setCookie } from "nookies";
 
 import { ILoginDto, ISignInDto } from "../../../types/auth/auth.types";
 import { AuthService } from "../../../services/auth/auth.service";
+import { IUpdateProfileDto } from "../../../../server/services/profile/dtos/update-profile.dto";
+import { ProfileService } from "../../../services/profile/profile.service";
 
 export const profileActions = {
   register: createAsyncThunk(
@@ -53,4 +55,19 @@ export const profileActions = {
       return thunkApi.rejectWithValue(error);
     }
   }),
+
+  update: createAsyncThunk(
+    "profile/update",
+    async (dto: IUpdateProfileDto, thunkApi) => {
+      try {
+        const response = await ProfileService.update(dto);
+
+        return response;
+      } catch (error) {
+        console.log(`Refreshing user error: ${error}`);
+
+        return thunkApi.rejectWithValue(error);
+      }
+    }
+  ),
 };

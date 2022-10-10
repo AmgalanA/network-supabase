@@ -1,0 +1,11 @@
+.icon {
+    @apply text-xl text-gray-400;
+}
+
+.iconItem {
+    @apply w-8 h-8 flex hover:bg-gray-100 mx-1 rounded-md transition-all duration-200 items-center justify-center cursor-pointer;
+}
+
+.active {
+    @apply bg-orange-500 text-white hover:bg-orange-600;
+}

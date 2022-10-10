@@ -1,0 +1,7 @@
+.commentForm {
+    @apply bg-gray-200 rounded-md pr-3 flex-1 h-full flex items-center;
+
+    > input {
+        @apply flex-1 outline-none bg-transparent pl-3 placeholder:text-sm;
+    }
+}

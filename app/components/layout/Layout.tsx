@@ -6,6 +6,7 @@ import Auth from "../pages/home/auth/Auth";
 import { useTypedSelector } from "../../hooks/store/useTypedSelector";
 import Loading from "../utils/loading/Loading";
 import { useAuth } from "../../hooks/auth/useAuth";
+import Header from "../pages/home/header/Header";
 
 const Layout: FC<PropsWithChildren<{ title: string }>> = ({
   title,
@@ -24,7 +25,10 @@ const Layout: FC<PropsWithChildren<{ title: string }>> = ({
       <Head>
         <title>{title}</title>
       </Head>
-      {children}
+      <div className={styles.wrapper}>
+        <Header />
+        {children}
+      </div>
     </div>
   );
 };

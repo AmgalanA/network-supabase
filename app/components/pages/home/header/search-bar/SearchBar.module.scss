@@ -1,0 +1,10 @@
+.search {
+    @apply flex flex-1 py-1 pr-2 pl-4 rounded-md items-center bg-gray-100 bg-opacity-80;
+    
+    > input {
+        @apply flex-1 outline-none bg-transparent placeholder:text-sm;
+    }
+
+    .searchIcon {
+    }
+}

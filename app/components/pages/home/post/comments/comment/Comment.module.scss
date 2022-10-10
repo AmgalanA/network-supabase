@@ -1,0 +1,19 @@
+.comment {
+    @apply flex items-start space-x-3;
+
+    .infoWrapper {
+        @apply flex flex-col items-start;
+
+        > h1 {
+            @apply text-[1.0rem] font-semibold;
+        }
+
+        > h2 {
+            @apply text-[0.9rem];
+        }
+
+        > .createdAt {
+            @apply text-xs text-gray-500;
+        }
+    }
+}

@@ -1,0 +1,7 @@
+.header {
+    @apply w-full bg-white flex space-x-2 items-center rounded-tl-lg rounded-tr-lg p-4;
+
+    .uploadPostButton {
+        @apply w-[40px] h-[40px] flex items-center justify-center bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition-all duration-200;
+    }
+}
