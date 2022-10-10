@@ -10,7 +10,11 @@ import Comments from "./comments/Comments";
 import styles from "./Post.module.scss";
 
 const Post: FC<{
-  post: { comments: IComment[]; post: IPost; profile: IProfile };
+  post: {
+    comments: { profile: IProfile; comment: IComment }[];
+    post: IPost;
+    profile: IProfile;
+  };
 }> = ({ post: { post, profile, comments } }) => {
   return (
     <div className={styles.post}>
